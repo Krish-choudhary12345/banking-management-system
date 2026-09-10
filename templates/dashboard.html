@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MyBank
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('transactions') }}">
+                Transactions
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Dashboard -->
+
+    <main class="dashboard">
+
+
+        <!-- Welcome -->
+
+        <div class="welcome">
+
+            <h1>
+                Welcome, {{ user["name"] }} 👋
+            </h1>
+
+            <p>
+                Account Number:
+                <strong>
+                    {{ user["account_no"] }}
+                </strong>
+            </p>
+
+        </div>
+
+
+
+        <!-- Balance -->
+
+        <div class="balance-card">
+
+            <p>
+                Available Balance
+            </p>
+
+            <h2>
+                ₹{{ "%.2f"|format(user["balance"]) }}
+            </h2>
+
+        </div>
+
+
+
+        <!-- Flash Messages -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% for category, message in messages %}
+
+                <div class="alert {{ category }}">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endwith %}
+
+
+
+        <!-- Banking Options -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- Deposit -->
+
+            <a href="{{ url_for('deposit') }}"
+               class="dashboard-card">
+
+                <span>
+                    💰
+                </span>
+
+                <h3>
+                    Deposit
+                </h3>
+
+                <p>
+                    Add money to your account.
+                </p>
+
+            </a>
+
+
+
+            <!-- Withdraw -->
+
+            <a href="{{ url_for('withdraw') }}"
+               class="dashboard-card">
+
+                <span>
+                    💸
+                </span>
+
+                <h3>
+                    Withdraw
+                </h3>
+
+                <p>
+                    Withdraw money from your account.
+                </p>
+
+            </a>
+
+
+
+            <!-- Transfer -->
+
+            <a href="{{ url_for('transfer') }}"
+               class="dashboard-card">
+
+                <span>
+                    🔄
+                </span>
+
+                <h3>
+                    Transfer
+                </h3>
+
+                <p>
+                    Send money to another account.
+                </p>
+
+            </a>
+
+
+
+            <!-- Transactions -->
+
+            <a href="{{ url_for('transactions') }}"
+               class="dashboard-card">
+
+                <span>
+                    📊
+                </span>
+
+                <h3>
+                    Transactions
+                </h3>
+
+                <p>
+                    View your transaction history.
+                </p>
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

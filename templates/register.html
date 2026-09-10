@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Create Account</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <div class="form-card">
+
+            <h1>
+                Create Account
+            </h1>
+
+            <p class="form-subtitle">
+                Open your MyBank account
+            </p>
+
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endwith %}
+
+
+            <!-- Registration Form -->
+
+            <form method="POST">
+
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Minimum 6 characters"
+                    minlength="6"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn full">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <p class="bottom-text">
+
+                Already have an account?
+
+                <a href="{{ url_for('login') }}">
+                    Login
+                </a>
+
+            </p>
+
+
+            <p class="bottom-text">
+
+                <a href="{{ url_for('index') }}">
+                    ← Back to Home
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

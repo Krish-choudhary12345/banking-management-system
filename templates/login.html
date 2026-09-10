@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <div class="form-card">
+
+            <h1>
+                Login
+            </h1>
+
+            <p class="form-subtitle">
+                Login to your MyBank account
+            </p>
+
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endwith %}
+
+
+            <!-- Login Form -->
+
+            <form method="POST">
+
+
+                <label for="account_no">
+                    Account Number
+                </label>
+
+                <input
+                    type="text"
+                    id="account_no"
+                    name="account_no"
+                    placeholder="Enter account number"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn full">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <!-- Register Link -->
+
+            <p class="bottom-text">
+
+                Don't have an account?
+
+                <a href="{{ url_for('register') }}">
+                    Create Account
+                </a>
+
+            </p>
+
+
+            <!-- Home Link -->
+
+            <p class="bottom-text">
+
+                <a href="{{ url_for('index') }}">
+                    ← Back to Home
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

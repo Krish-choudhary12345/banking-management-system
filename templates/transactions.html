@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Transactions</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MyBank
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Transaction Section -->
+
+    <main class="transaction-container">
+
+        <h1>
+            Transaction History
+        </h1>
+
+
+        {% if transactions %}
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Description
+                        </th>
+
+                        <th>
+                            Date & Time
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for transaction in transactions %}
+
+                    <tr>
+
+                        <td>
+                            {{ transaction["id"] }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="transaction-type">
+
+                                {{ transaction["transaction_type"] }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            ₹{{ "%.2f"|format(
+                                transaction["amount"]
+                            ) }}
+
+                        </td>
+
+
+                        <td>
+
+                            {{ transaction["description"] }}
+
+                        </td>
+
+
+                        <td>
+
+                            {{ transaction["created_at"] }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <!-- No Transactions -->
+
+        <div class="empty">
+
+            <h3>
+                No Transactions Yet
+            </h3>
+
+            <p>
+                Your transactions will appear here
+                after you deposit, withdraw or transfer money.
+            </p>
+
+        </div>
+
+
+        {% endif %}
+
+
+
+        <!-- Back -->
+
+        <a href="{{ url_for('dashboard') }}"
+           class="back-link">
+
+            ← Back to Dashboard
+
+        </a>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MyBank
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('register') }}">
+                Register
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to MyBank
+            </h1>
+
+            <p>
+                A simple banking management system
+                built with Python, Flask, HTML, CSS
+                and SQL.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="{{ url_for('register') }}"
+                   class="btn">
+
+                    Create Account
+
+                </a>
+
+
+                <a href="{{ url_for('login') }}"
+                   class="btn secondary">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+
+    <section class="features">
+
+        <h2>
+            Banking Services
+        </h2>
+
+
+        <div class="feature-container">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Deposit
+                </h3>
+
+                <p>
+                    Deposit money into your
+                    bank account.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💸
+                </div>
+
+                <h3>
+                    Withdraw
+                </h3>
+
+                <p>
+                    Withdraw money from
+                    your account.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔄
+                </div>
+
+                <h3>
+                    Transfer
+                </h3>
+
+                <p>
+                    Transfer money to
+                    another account.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Transactions
+                </h3>
+
+                <p>
+                    View your complete
+                    transaction history.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 MyBank Banking System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

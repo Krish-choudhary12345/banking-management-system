@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank - Deposit Money</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MyBank
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('transactions') }}">
+                Transactions
+            </a>
+
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Deposit Form -->
+
+    <div class="form-container">
+
+        <div class="form-card">
+
+            <h1>
+                Deposit Money
+            </h1>
+
+            <p class="form-subtitle">
+                Add money to your bank account
+            </p>
+
+
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endwith %}
+
+
+
+            <!-- Deposit Form -->
+
+            <form method="POST">
+
+
+                <label for="amount">
+                    Amount
+                </label>
+
+
+                <input
+                    type="number"
+                    id="amount"
+                    name="amount"
+                    min="1"
+                    step="0.01"
+                    placeholder="Enter amount"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="btn full">
+
+                    Deposit Money
+
+                </button>
+
+            </form>
+
+
+
+            <!-- Back -->
+
+            <a href="{{ url_for('dashboard') }}"
+               class="back-link">
+
+                ← Back to Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
